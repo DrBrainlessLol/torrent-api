@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  torrent-api:
+    build: .
+    container_name: torrent-api
+    ports:
+      - "8080:80"
+    volumes:
+      - ./cache:/var/www/html/cache
+      - ./logs:/var/www/html/logs
+      - .:/var/www/html
+    environment:
+      PHP_MEMORY_LIMIT: 256M
+      PHP_MAX_EXECUTION_TIME: 60
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
