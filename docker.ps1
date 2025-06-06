@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory=$true)]
-    [ValidateSet("build", "up", "down", "logs", "clean", "prod", "prod-down")]
+    [ValidateSet("build", "up", "down", "logs", "clean", "dev", "dev-down")]
     [string]$Action
 )
 
@@ -9,7 +9,7 @@ switch ($Action) {
         docker compose build
     }
     "up" {
-        docker compose up -d --build
+        docker compose up -d
     }
     "down" {
         docker compose down
@@ -21,10 +21,10 @@ switch ($Action) {
         docker compose down --volumes --remove-orphans
         docker system prune -f
     }
-    "prod" {
-        docker compose -f docker-compose.prod.yml up -d --build
+    "dev" {
+        docker compose -f docker-compose-dev.yml up -d --build
     }
-    "prod-down" {
-        docker compose -f docker-compose.prod.yml down
+    "dev-down" {
+        docker compose -f docker-compose-dev.yml down
     }
 }

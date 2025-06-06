@@ -1,18 +1,14 @@
-version: '3.8'
-
 services:
   torrent-api:
-    build: .
-    container_name: torrent-api
+    image: ghcr.io/drbrainlesslol/torrent-api:latest
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./cache:/var/www/html/cache
       - ./logs:/var/www/html/logs
-      - .:/var/www/html
     environment:
-      PHP_MEMORY_LIMIT: 256M
-      PHP_MAX_EXECUTION_TIME: 60
+      PHP_MEMORY_LIMIT: 512M
+      PHP_MAX_EXECUTION_TIME: 120
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/health"]
