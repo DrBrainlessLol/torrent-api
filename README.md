@@ -51,8 +51,6 @@ docker compose up -d
 ./docker.ps1 up
 ```
 
-For more details, see the [DOCKER.md](DOCKER.md) file.
-
 **API**: http://localhost:8080  
 **Test Interface**: http://localhost:8080/test.html
 
