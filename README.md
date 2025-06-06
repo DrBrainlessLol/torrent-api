@@ -45,12 +45,13 @@ Every mapping makes **live API calls** to AniList's GraphQL endpoint - no pre-bu
 The easiest way to get started is with Docker:
 
 ```powershell
+docker compose up -d
+
 # Windows PowerShell
 ./docker.ps1 up
-
-# Linux/macOS or cross-platform
-docker compose up -d --build
 ```
+
+For more details, see the [DOCKER.md](DOCKER.md) file.
 
 **API**: http://localhost:8080  
 **Test Interface**: http://localhost:8080/test.html
@@ -75,6 +76,7 @@ chmod 777 cache logs
 ```
 
 **Test Interface**: http://localhost:8000/test.html
+(When using docker, use the development image)
 
 ## API Endpoints
 
